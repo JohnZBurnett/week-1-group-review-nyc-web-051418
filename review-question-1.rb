@@ -1,5 +1,5 @@
 ## QUESTION 1
-
+require 'pry'
 pokemon = [
   {
     "id": 1,
@@ -60,6 +60,12 @@ pokemon = [
 }
 ]
 
+base_xp = pokemon.find do |pokemon_hash|
+  pokemon_hash["base_experience"] > 40
+end
+
+pry.Start
+
 
 # How would you get the url for Bulbasaur's ability?
 # How would you return the first pokemon with base experience over 40?
@@ -67,3 +73,34 @@ pokemon = [
 # How would you return an array of all of the pokemon's names?
 # How would you determine whether or not the pokemon array contained any pokemon with a weight greater than 60?
 #  whatever method you use should return true if there are any such pokemon, false if not.
+
+require 'pry'
+#### 1st Question #####
+ability = ""
+pokemon.each do |pokemon_hash|
+  pokemon_hash["abilities"][0]["ability"]["url"]
+end
+#####
+
+  #### 2nd Question ####
+  base_xp = pokemon.find do |pokemon_hash|
+    pokemon_hash["base_experience"] > 40
+  end
+  ######
+
+#### 3rd Question ###
+pokemon.select do |pokemon_hash|
+  pokemon_hash["base_experience"] > 40
+end
+###
+
+### 4th Question ###
+pokemon.map do |pokemon_hash|
+  pokemon_hash["name"]
+end
+###
+
+#### 5th Question ####
+pokemon.any? do |pokemon_hash|
+  pokemon_hash["name"] > 60
+end
